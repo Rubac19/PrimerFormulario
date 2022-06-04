@@ -1,0 +1,66 @@
+body{
+    background-color:#181818;
+    /*background-color:#18A383;*/
+  
+    /*font-family: 'Times New Roman',*/ 
+    font-family: Arial, Helvetica, sans-serif;
+    color:white;
+}
+
+.radios, .check{
+    display: flex;
+    justify-content:space-between;
+}
+
+.date{
+    display: flex;
+    justify-content:space-between;
+}
+
+.container{
+    width: 700px;
+}
+
+h1{
+    display:flex;
+    justify-content:center;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+
+/* Estilo de PHP */
+.php_data{
+    display:flex;
+    align-items:16px;
+    justify-content: space-between;
+}
+.php_data .p_titulo{
+    color:red;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+.php_data .p_info{
+    margin-right: 20px;
+}
+
+.form{
+    margin-top: 40px;
+    width: 450px;
+}
+
+.errores{
+    background-color: #0FF;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    padding-left:10px;
+    padding-right: 10px;
+    height: 30px;
+    font-weight: bold;
+}
+
+.errores i{
+    font-size: 18px;
+    margin-right: 10px;
+}

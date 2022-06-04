@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./style/main.css" />
+</head>
+<body>
+ 
+<!--  Los contenedores(containers) se utilizan para contener, rellenar y (a veces) centrar el contenido dentro de ellos -->
+
+    <div class="container">
+        <h1>Registro de Usuario</h1>
+  <!-- se declara el formulario con direccionamiento a data.php cuando se presione el boton enviar ademas del. Retorno de una funcion booleana de javasript validacionEnviar para verificar el correcto envio de datos-->
+        <form class="border p-4" action="./backend/data.php" method="post" name="miFormulario" id="miFormulario" onsubmit="return validacionEnviar()">
+            <!-- se divide las secciones en una tabla con 5 filas y dos columnas para  dar una mejor presentacion-->
+            <div class="row mb-4">
+                <div class="col">
+                    <input required type="text" placeholder="DNI" name="dni" id="dni" class="js_Dni form-control"/>
+                </div>
+                <div class="col">
+                    <input required type="text" placeholder="Nombre" name="nombre" id="nombre" class="js_Nombre form-control"/>
+                </div>
+            </div>
+            
+            <div class="row mb-4">
+                <div class="col">
+                    <input required type="text" placeholder="Apellido Paterno" name="apellidoP" id="apellidoP" class="js_Apellido_P form-control"/>
+                </div>
+                <div class="col">
+                    <input required type="text" placeholder="Apellido Materno" name="apellidoM" id="apellidoM" class="js_Apellido_M form-control"/>  
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col">
+                    <div class="date form-control">
+                        <label>Fecha de Nacimieto:</label>
+                        <input required type="date" min="1960-01-01" max="2004-12-31" name="fechaNac" id="fechaNac" class="js_fechaNac"/>
+                    </div>
+                    
+                </div>
+                <div class="col">
+                    <input required type="email" placeholder="Email" name="email" id="email" class="js_Email form-control"/>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col">
+                    <input required type="text" placeholder="Telefono" name="telefono" id="telefono" class="js_Telefono form-control"/>
+                </div>
+                <div class="col">
+                  <!-- para la parte de seleccion de estudios usamos un chekbox-->
+                    <div class="check form-control">
+                        <label>Estudios:</label>
+                        <label><input type="checkbox" name="html" id="html" value="html" class="js_Conocimientos">HTML</label>
+                        <label><input type="checkbox" name="js" id="js" value="js" class="js_Conocimientos">JS</label>
+                        <label><input type="checkbox" name="css" id="css" value="css" class="js_Conocimientos" >CSS</label>
+                        <label><input type="checkbox" name="php" id="php" value="php" class="js_Conocimientos">PHP</label>
+                    </div>
+                </div>
+            </div>
+          
+          <!-- En la etiqueta div class= "row mb-4": contiene 2 columnas en una fila, ademas tiene un margen hacia abajo de 4 pixeles-->
+            <div class="row mb-4">
+                <!--En la etiqueta div class="col": se define la opcion de Genero con un tipo = radio en donde solo se podra escoger una opcion-->
+                <!--Teniendo como opciones Masculino y Femenino-->
+                <!-- Se crean las clases radios y js_Genero para posteriormente añadir estilo css y programacion con java script -->
+              <div class="col">
+                    <div class="radios form-control">
+                        <label>Genero:</label>
+                        <label><input type="radio" name="genero" id="genero" value="Masculino" class="js_Genero">Masculino</label>
+                        <label><input type="radio" name="genero" id="genero" value="Femenino" class="js_Genero">Femenino</label>
+                    </div>   
+              </div>
+
+              <!-- En esta division,utilizamos el elemento "select"para crear una lista de opciones de paises, ademas utilizamos el atributo "required" para validar
+              la seleccion obligatoria del pais, se crea la clase js_Pais para identificar esta division en el archivo main.js-->
+              <div class="col">
+                    <select required class="js_Pais form-control" name="pais" id="pais">
+                        <option value="">Selecciona su Pais</option>
+                        <option value="Argentina">Argentina</option>
+                        <option value="Bolivia">Bolivia</option>
+                        <option value="Brasil">Brasil</option>
+                        <option value="Colombia">Colombia</option>
+                        <option value="Chile">Chile</option>
+                        <option value="Ecuador">Ecuador</option>
+                        <option value="Paraguay">Paraguay</option>
+                        <option value="Peru">Peru</option>
+                        <option value="Venezuela">Venezuela</option>
+                        <option value="Uruguay">Uruguay</option>
+                    </select>
+              </div>
+            </div>
+            <!--En esta division se tiene los botones de "Enviar" y "Limpiar" en la cual tienen un margen hacia abajo de 4 pixeles
+                El boton "Enviar" es de tipo "submit" entonces al presionar enviara informacion al archivo data.php
+                El boton "Limpiar" es de tipo "reset" entonces al presionar restatura todos los valores del formulario a su estado inicial-->
+            <div class="row mb-4">
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="reset" class="btn btn-secondary">Limpiar</button>
+                </div>
+            </div>
+          <!-- En esta division se tiene un "mensaje" que indicará el tipo de error cometido al momento de rellenar el formulario,
+              si comete un error, se mostrará el icono de una "x" significando que debe corregir sino no se podrá procesar la informacion del formulario-->
+            <div class="row ">
+                <div class="col ">
+                    <p class="col errores form-control">       
+                        <i class="fa fa-times-circle"></i>
+                        Rellenar los campos.
+                    </p>                    
+                </div> 
+            </div>
+
+        </form>
+    </div>
+  <!-- Realizams la conexion con el archivo main.js para que se ejecuten toda la logica de programacion de validaciones-->
+    <script src="./script/main.js"></script>
+</body>
+</html>
